@@ -50,6 +50,7 @@ export const Groups = () => {
 
   return (
       <div className='grid-container'>
+        <video src='/videos/video-2.mp4' autoPlay loop muted />
         {buttonsData.map((button, index) => (
           <div className="grid-item" key={index}>
             <div>
