@@ -1,4 +1,4 @@
-const Milestones = require("../models/milesstones");
+const Milestones = require("../services/milesstones");
 
 const milestonesController = {
   getAllMilestones: async (req, res) => {

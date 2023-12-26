@@ -1,4 +1,4 @@
-const PersonalComments = require("../models/personalComments");
+const PersonalComments = require("../services/personalComments");
 
 const personalCommentsController = {
   getAllPersonalComments: async (req, res) => {

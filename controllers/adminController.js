@@ -1,4 +1,4 @@
-const Admin = require('../models/admin');
+const Admin = require("../services/admin");
 
 const adminController = {
   getAllAdmins: async (req, res) => {
@@ -7,7 +7,7 @@ const adminController = {
       res.json({ admins });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -20,11 +20,11 @@ const adminController = {
       if (admin) {
         res.json(admin);
       } else {
-        res.status(404).json({ error: 'Admin not found' });
+        res.status(404).json({ error: "Admin not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -36,7 +36,7 @@ const adminController = {
       res.status(201).json(createdAdmin);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -50,11 +50,11 @@ const adminController = {
       if (admin) {
         res.json(admin);
       } else {
-        res.status(404).json({ error: 'Admin not found' });
+        res.status(404).json({ error: "Admin not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -65,13 +65,13 @@ const adminController = {
       const deletedAdmin = await Admin.deleteAdmin(adminId);
 
       if (deletedAdmin) {
-        res.json({ message: 'Admin deleted successfully' });
+        res.json({ message: "Admin deleted successfully" });
       } else {
-        res.status(404).json({ error: 'Admin not found' });
+        res.status(404).json({ error: "Admin not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 };

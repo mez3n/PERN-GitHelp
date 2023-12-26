@@ -1,5 +1,6 @@
 const express = require("express");
 const patientJoinsGroupController = require("../controllers/patientJoinsGroupController");
+const patientJoinsGroupValidations = require("../models/patientJoinsGroupValidations");
 
 const router = express.Router();
 
@@ -13,11 +14,16 @@ router.get(
 );
 
 // Create a new Patient-Joined Group
-router.post("/", patientJoinsGroupController.createPatientJoinsGroup);
+router.post(
+  "/",
+  patientJoinsGroupValidations,
+  patientJoinsGroupController.createPatientJoinsGroup
+);
 
 // Update a Patient-Joined Group by ID
 router.put(
   "/:userId/:groupId",
+  patientJoinsGroupValidations,
   patientJoinsGroupController.updatePatientJoinsGroup
 );
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const volunteerApplyServiceController = require("../controllers/volunteerApplyServiceController");
+const volunteerApplyServiceValidations = require("../models/volunteerApplyServiceValidations");
 
 const router = express.Router();
 
@@ -13,11 +14,16 @@ router.get(
 );
 
 // Create a new application
-router.post("/", volunteerApplyServiceController.createApplication);
+router.post(
+  "/",
+  volunteerApplyServiceValidations,
+  volunteerApplyServiceController.createApplication
+);
 
 // Update an application by ID
 router.put(
   "/:serviceId/:ppid/:pfid/:uid",
+  volunteerApplyServiceValidations,
   volunteerApplyServiceController.updateApplication
 );
 

@@ -1,4 +1,4 @@
-const Representatives = require("../models/representatives");
+const Representatives = require("../services/representatives");
 
 const representativesController = {
   getAllRepresentatives: async (req, res) => {

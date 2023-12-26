@@ -1,4 +1,4 @@
-const Profile = require('../models/profile');
+const Profile = require("../services/profile");
 
 const profileController = {
   getProfileByUserId: async (req, res) => {
@@ -10,11 +10,11 @@ const profileController = {
       if (profile) {
         res.json(profile);
       } else {
-        res.status(404).json({ error: 'Profile not found' });
+        res.status(404).json({ error: "Profile not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -26,7 +26,7 @@ const profileController = {
       res.status(201).json(createdProfile);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -40,11 +40,11 @@ const profileController = {
       if (profile) {
         res.json(profile);
       } else {
-        res.status(404).json({ error: 'Profile not found' });
+        res.status(404).json({ error: "Profile not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -55,13 +55,13 @@ const profileController = {
       const deletedProfile = await Profile.deleteProfile(userId);
 
       if (deletedProfile) {
-        res.json({ message: 'Profile deleted successfully' });
+        res.json({ message: "Profile deleted successfully" });
       } else {
-        res.status(404).json({ error: 'Profile not found' });
+        res.status(404).json({ error: "Profile not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 };

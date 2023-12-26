@@ -1,4 +1,4 @@
-const VolunteerApplyService = require("../models/volunteerApplyService");
+const VolunteerApplyService = require("../services/volunteerApplyService");
 
 const volunteerApplyServiceController = {
   getAllApplications: async (req, res) => {

@@ -1,5 +1,6 @@
 const express = require("express");
 const personalPostsController = require("../controllers/personalPostsController");
+const personalPostsValidations = require("../models/personalPostsValidations");
 
 const router = express.Router();
 
@@ -10,10 +11,18 @@ router.get("/", personalPostsController.getAllPersonalPosts);
 router.get("/:ppid/:pfid", personalPostsController.getPersonalPostsById);
 
 // Create a new personal post
-router.post("/", personalPostsController.createPersonalPosts);
+router.post(
+  "/",
+  personalPostsValidations,
+  personalPostsController.createPersonalPosts
+);
 
 // Update a personal post by ID
-router.put("/:ppid/:pfid", personalPostsController.updatePersonalPosts);
+router.put(
+  "/:ppid/:pfid",
+  personalPostsValidations,
+  personalPostsController.updatePersonalPosts
+);
 
 // Delete a personal post by ID
 router.delete("/:ppid/:pfid", personalPostsController.deletePersonalPosts);

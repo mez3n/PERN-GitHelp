@@ -1,4 +1,4 @@
-const GroupComments = require("../models/groupComments");
+const GroupComments = require("../services/groupComments");
 
 const groupCommentsController = {
   getAllGroupComments: async (req, res) => {

@@ -1,4 +1,4 @@
-const PatientJoinsGroup = require("../models/patientJoinsGroup");
+const PatientJoinsGroup = require("../services/patientJoinsGroup");
 
 const patientJoinsGroupController = {
   getAllPatientJoinsGroups: async (req, res) => {

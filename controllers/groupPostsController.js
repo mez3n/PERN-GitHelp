@@ -1,4 +1,4 @@
-const GroupPosts = require("../models/groupPosts");
+const GroupPosts = require("../services/groupPosts");
 
 const groupPostsController = {
   getAllGroupPosts: async (req, res) => {

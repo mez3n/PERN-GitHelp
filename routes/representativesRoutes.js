@@ -1,5 +1,6 @@
 const express = require("express");
 const representativesController = require("../controllers/representativesController");
+const representativesValidations = require("../models/representativesValidations");
 
 const router = express.Router();
 
@@ -10,10 +11,18 @@ router.get("/", representativesController.getAllRepresentatives);
 router.get("/:repId", representativesController.getRepresentativeById);
 
 // Create a new representative
-router.post("/", representativesController.createRepresentative);
+router.post(
+  "/",
+  representativesValidations,
+  representativesController.createRepresentative
+);
 
 // Update a representative by ID
-router.put("/:repId", representativesController.updateRepresentative);
+router.put(
+  "/:repId",
+  representativesValidations,
+  representativesController.updateRepresentative
+);
 
 // Delete a representative by ID
 router.delete("/:repId", representativesController.deleteRepresentative);

@@ -1,5 +1,6 @@
 const express = require("express");
 const imagesController = require("../controllers/imagesController");
+const imagesValidations = require("../models/imagesValidations");
 
 const router = express.Router();
 
@@ -10,10 +11,10 @@ router.get("/", imagesController.getAllImages);
 router.get("/:imageId", imagesController.getImageById);
 
 // Create a new image
-router.post("/", imagesController.createImage);
+router.post("/", imagesValidations, imagesController.createImage);
 
 // Update an image by ID
-router.put("/:imageId", imagesController.updateImage);
+router.put("/:imageId", imagesValidations, imagesController.updateImage);
 
 // Delete an image by ID
 router.delete("/:imageId", imagesController.deleteImage);

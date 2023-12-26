@@ -1,5 +1,6 @@
 const express = require("express");
 const personalCommentsController = require("../controllers/personalCommentsController");
+const personalCommentsValidations = require("../models/personalCommentsValidations");
 
 const router = express.Router();
 
@@ -10,10 +11,18 @@ router.get("/", personalCommentsController.getAllPersonalComments);
 router.get("/:pcid", personalCommentsController.getPersonalCommentById);
 
 // Create a new personal comment
-router.post("/", personalCommentsController.createPersonalComment);
+router.post(
+  "/",
+  personalCommentsValidations,
+  personalCommentsController.createPersonalComment
+);
 
 // Update a personal comment by ID
-router.put("/:pcid", personalCommentsController.updatePersonalComment);
+router.put(
+  "/:pcid",
+  personalCommentsValidations,
+  personalCommentsController.updatePersonalComment
+);
 
 // Delete a personal comment by ID
 router.delete("/:pcid", personalCommentsController.deletePersonalComment);

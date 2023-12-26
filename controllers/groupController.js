@@ -1,5 +1,4 @@
-// controllers/groupController.js
-const Group = require('../models/group.js');
+const Group = require("../services/group.js");
 
 const groupController = {
   getAllGroups: async (req, res) => {
@@ -8,7 +7,7 @@ const groupController = {
       res.json({ groups });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -21,11 +20,11 @@ const groupController = {
       if (group) {
         res.json(group);
       } else {
-        res.status(404).json({ error: 'Group not found' });
+        res.status(404).json({ error: "Group not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -37,7 +36,7 @@ const groupController = {
       res.status(201).json(createdGroup);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -51,11 +50,11 @@ const groupController = {
       if (group) {
         res.json(group);
       } else {
-        res.status(404).json({ error: 'Group not found' });
+        res.status(404).json({ error: "Group not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -66,13 +65,13 @@ const groupController = {
       const deletedGroup = await Group.deleteGroup(groupId);
 
       if (deletedGroup) {
-        res.json({ message: 'Group deleted successfully' });
+        res.json({ message: "Group deleted successfully" });
       } else {
-        res.status(404).json({ error: 'Group not found' });
+        res.status(404).json({ error: "Group not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 };

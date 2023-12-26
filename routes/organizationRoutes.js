@@ -1,5 +1,6 @@
 const express = require("express");
 const organizationController = require("../controllers/organizationController");
+const organizationValidations = require("../models/organizationValidations");
 
 const router = express.Router();
 
@@ -10,10 +11,18 @@ router.get("/", organizationController.getAllOrganizations);
 router.get("/:id", organizationController.getOrganizationById);
 
 // Create a new organization
-router.post("/", organizationController.createOrganization);
+router.post(
+  "/",
+  organizationValidations,
+  organizationController.createOrganization
+);
 
 // Update an organization by ID
-router.put("/:id", organizationController.updateOrganization);
+router.put(
+  "/:id",
+  organizationValidations,
+  organizationController.updateOrganization
+);
 
 // Delete an organization by ID
 router.delete("/:id", organizationController.deleteOrganization);

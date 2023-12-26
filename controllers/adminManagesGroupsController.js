@@ -1,4 +1,4 @@
-const AdminManagesGroups = require("../models/adminManagesGroups");
+const AdminManagesGroups = require("../services/adminManagesGroups");
 
 const adminManagesGroupsController = {
   getAllAdminManagesGroups: async (req, res) => {

@@ -1,4 +1,4 @@
-const PersonalPosts = require('../models/personalPosts');
+const PersonalPosts = require("../services/personalPosts");
 
 const personalPostsController = {
   getAllPersonalPosts: async (req, res) => {
@@ -7,7 +7,7 @@ const personalPostsController = {
       res.json({ posts });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -21,11 +21,11 @@ const personalPostsController = {
       if (post) {
         res.json(post);
       } else {
-        res.status(404).json({ error: 'Personal Post not found' });
+        res.status(404).json({ error: "Personal Post not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -37,7 +37,7 @@ const personalPostsController = {
       res.status(201).json(createdPost);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -47,16 +47,20 @@ const personalPostsController = {
     const updatedPost = req.body;
 
     try {
-      const post = await PersonalPosts.updatePersonalPosts(ppid, pfid, updatedPost);
+      const post = await PersonalPosts.updatePersonalPosts(
+        ppid,
+        pfid,
+        updatedPost
+      );
 
       if (post) {
         res.json(post);
       } else {
-        res.status(404).json({ error: 'Personal Post not found' });
+        res.status(404).json({ error: "Personal Post not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
@@ -68,13 +72,13 @@ const personalPostsController = {
       const deletedPost = await PersonalPosts.deletePersonalPosts(ppid, pfid);
 
       if (deletedPost) {
-        res.json({ message: 'Personal Post deleted successfully' });
+        res.json({ message: "Personal Post deleted successfully" });
       } else {
-        res.status(404).json({ error: 'Personal Post not found' });
+        res.status(404).json({ error: "Personal Post not found" });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
 };

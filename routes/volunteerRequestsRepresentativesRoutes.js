@@ -1,5 +1,6 @@
 const express = require("express");
 const volunteerRequestsRepresentativesController = require("../controllers/volunteerRequestsRepresentativesController");
+const volunteerRequestsRepresentativesValidations = require("../models/volunteerRequestsRepresentativesValidations");
 
 const router = express.Router();
 
@@ -13,7 +14,11 @@ router.get(
 );
 
 // Create a new request
-router.post("/", volunteerRequestsRepresentativesController.createRequest);
+router.post(
+  "/",
+  volunteerRequestsRepresentativesValidations,
+  volunteerRequestsRepresentativesController.createRequest
+);
 
 // Delete a request by ID
 router.delete(

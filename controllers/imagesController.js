@@ -1,5 +1,4 @@
-// controllers/imagesController.js
-const Images = require("../models/images");
+const Images = require("../services/images");
 
 const imagesController = {
   getAllImages: async (req, res) => {

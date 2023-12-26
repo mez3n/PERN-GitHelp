@@ -1,4 +1,4 @@
-const VolunteerRequestsRepresentatives = require("../models/volunteerRequestsRepresentatives");
+const VolunteerRequestsRepresentatives = require("../services/volunteerRequestsRepresentatives");
 
 const volunteerRequestsRepresentativesController = {
   getAllRequests: async (req, res) => {
