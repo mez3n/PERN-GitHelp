@@ -1,6 +1,6 @@
 
 const jwt = require('jsonwebtoken');
-const db = require('../db/connection');
+const pool = require('../DB/db.js');
 const authMiddleware = async (req, res, next) => {
 // Get the token from the authorization header
 const authHeader = req.headers.authorization;
@@ -18,13 +18,13 @@ try {
 // Verify the token and get the user's id from it
 const { id } = jwt.verify(token, process.env.JWT_SECRET);
 // Get the user from the database
-const user= await db.query("select * from users where uid=$1",[id]);
+const user= await pool.query("select * from users where uid=$1",[id]);
 // Check if the user exists
 if (user.length==0) {
 return res.status(404).json({ error: "User not found" });
 }
 // Attach the user to the request object
-req.body.user = user[0];
+req.body.user = user.rows[0];
 // Call the next middleware
 next();
 } catch (err) {
