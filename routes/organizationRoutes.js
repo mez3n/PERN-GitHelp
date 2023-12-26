@@ -1,6 +1,7 @@
 const express = require("express");
 const organizationController = require("../controllers/organizationController");
 const organizationValidations = require("../models/organizationValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.get("/:id", organizationController.getOrganizationById);
 router.post(
   "/",
   organizationValidations,
+  handleValidationErrors,
   organizationController.createOrganization
 );
 
@@ -21,6 +23,7 @@ router.post(
 router.put(
   "/:id",
   organizationValidations,
+  handleValidationErrors,
   organizationController.updateOrganization
 );
 

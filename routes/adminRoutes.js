@@ -1,6 +1,7 @@
 const express = require("express");
 const adminController = require("../controllers/adminController");
 const adminValidations = require("../models/adminValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,10 +12,20 @@ router.get("/", adminController.getAllAdmins);
 router.get("/:id", adminController.getAdminById);
 
 // Create a new admin
-router.post("/", adminValidations, adminController.createAdmin);
+router.post(
+  "/",
+  adminValidations,
+  handleValidationErrors,
+  adminController.createAdmin
+);
 
 // Update an admin by ID
-router.put("/:id", adminValidations, adminController.updateAdmin);
+router.put(
+  "/:id",
+  adminValidations,
+  handleValidationErrors,
+  adminController.updateAdmin
+);
 
 // Delete an admin by ID
 router.delete("/:id", adminController.deleteAdmin);

@@ -1,6 +1,7 @@
 const express = require("express");
 const groupCommentsController = require("../controllers/groupCommentsController");
 const groupCommentsValidations = require("../models/groupCommentsValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.get("/:gcid", groupCommentsController.getGroupCommentById);
 router.post(
   "/",
   groupCommentsValidations,
+  handleValidationErrors,
   groupCommentsController.createGroupComment
 );
 
@@ -21,6 +23,7 @@ router.post(
 router.put(
   "/:gcid",
   groupCommentsValidations,
+  handleValidationErrors,
   groupCommentsController.updateGroupComment
 );
 

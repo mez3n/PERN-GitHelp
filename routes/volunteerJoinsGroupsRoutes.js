@@ -1,6 +1,7 @@
 const express = require("express");
 const volunteerJoinsGroupsController = require("../controllers/volunteerJoinsGroupsController");
 const volunteerJoinsGroupsValidations = require("../models/volunteerJoinsGroupsValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.get("/:uid/:gid", volunteerJoinsGroupsController.getJoinById);
 router.post(
   "/",
   volunteerJoinsGroupsValidations,
+  handleValidationErrors,
   volunteerJoinsGroupsController.createJoin
 );
 
@@ -21,6 +23,7 @@ router.post(
 router.put(
   "/:uid/:gid",
   volunteerJoinsGroupsValidations,
+  handleValidationErrors,
   volunteerJoinsGroupsController.updateJoin
 );
 

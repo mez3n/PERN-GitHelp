@@ -1,6 +1,7 @@
 const express = require("express");
 const volunteerApplyServiceController = require("../controllers/volunteerApplyServiceController");
 const volunteerApplyServiceValidations = require("../models/volunteerApplyServiceValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.get(
 router.post(
   "/",
   volunteerApplyServiceValidations,
+  handleValidationErrors,
   volunteerApplyServiceController.createApplication
 );
 
@@ -24,6 +26,7 @@ router.post(
 router.put(
   "/:serviceId/:ppid/:pfid/:uid",
   volunteerApplyServiceValidations,
+  handleValidationErrors,
   volunteerApplyServiceController.updateApplication
 );
 

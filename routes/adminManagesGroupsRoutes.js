@@ -1,5 +1,6 @@
 const express = require("express");
 const adminManagesGroupsController = require("../controllers/adminManagesGroupsController");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 const adminManagesGroupsValidations = require("../models/adminManagesGroupsValidations");
@@ -17,6 +18,7 @@ router.get(
 router.post(
   "/",
   adminManagesGroupsValidations,
+  handleValidationErrors,
   adminManagesGroupsController.createAdminManagesGroups
 );
 
@@ -24,6 +26,7 @@ router.post(
 router.put(
   "/:adminId/:groupId",
   adminManagesGroupsValidations,
+  handleValidationErrors,
   adminManagesGroupsController.updateAdminManagesGroups
 );
 

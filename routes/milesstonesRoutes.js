@@ -1,6 +1,7 @@
 const express = require("express");
 const milestonesController = require("../controllers/milesstonesController");
 const milestonesValidations = require("../models/milestonesValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,12 +12,18 @@ router.get("/", milestonesController.getAllMilestones);
 router.get("/:msid", milestonesController.getMilestoneById);
 
 // Create a new milestone
-router.post("/", milestonesValidations, milestonesController.createMilestone);
+router.post(
+  "/",
+  milestonesValidations,
+  handleValidationErrors,
+  milestonesController.createMilestone
+);
 
 // Update a milestone by ID
 router.put(
   "/:msid",
   milestonesValidations,
+  handleValidationErrors,
   milestonesController.updateMilestone
 );
 

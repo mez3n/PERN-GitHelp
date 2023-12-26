@@ -1,6 +1,7 @@
 const express = require("express");
 const patientJoinsGroupController = require("../controllers/patientJoinsGroupController");
 const patientJoinsGroupValidations = require("../models/patientJoinsGroupValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.get(
 router.post(
   "/",
   patientJoinsGroupValidations,
+  handleValidationErrors,
   patientJoinsGroupController.createPatientJoinsGroup
 );
 
@@ -24,6 +26,7 @@ router.post(
 router.put(
   "/:userId/:groupId",
   patientJoinsGroupValidations,
+  handleValidationErrors,
   patientJoinsGroupController.updatePatientJoinsGroup
 );
 

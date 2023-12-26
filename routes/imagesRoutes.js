@@ -1,6 +1,7 @@
 const express = require("express");
 const imagesController = require("../controllers/imagesController");
 const imagesValidations = require("../models/imagesValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,10 +12,20 @@ router.get("/", imagesController.getAllImages);
 router.get("/:imageId", imagesController.getImageById);
 
 // Create a new image
-router.post("/", imagesValidations, imagesController.createImage);
+router.post(
+  "/",
+  imagesValidations,
+  handleValidationErrors,
+  imagesController.createImage
+);
 
 // Update an image by ID
-router.put("/:imageId", imagesValidations, imagesController.updateImage);
+router.put(
+  "/:imageId",
+  imagesValidations,
+  handleValidationErrors,
+  imagesController.updateImage
+);
 
 // Delete an image by ID
 router.delete("/:imageId", imagesController.deleteImage);

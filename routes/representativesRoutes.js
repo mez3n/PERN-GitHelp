@@ -1,6 +1,7 @@
 const express = require("express");
 const representativesController = require("../controllers/representativesController");
 const representativesValidations = require("../models/representativesValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.get("/:repId", representativesController.getRepresentativeById);
 router.post(
   "/",
   representativesValidations,
+  handleValidationErrors,
   representativesController.createRepresentative
 );
 
@@ -21,6 +23,7 @@ router.post(
 router.put(
   "/:repId",
   representativesValidations,
+  handleValidationErrors,
   representativesController.updateRepresentative
 );
 

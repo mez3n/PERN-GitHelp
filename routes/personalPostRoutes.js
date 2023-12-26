@@ -1,6 +1,7 @@
 const express = require("express");
 const personalPostsController = require("../controllers/personalPostsController");
 const personalPostsValidations = require("../models/personalPostsValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -13,14 +14,14 @@ router.get("/:ppid/:pfid", personalPostsController.getPersonalPostsById);
 // Create a new personal post
 router.post(
   "/",
-  personalPostsValidations,
+  personalPostsValidations,handleValidationErrors,
   personalPostsController.createPersonalPosts
 );
 
 // Update a personal post by ID
 router.put(
   "/:ppid/:pfid",
-  personalPostsValidations,
+  personalPostsValidations,handleValidationErrors,
   personalPostsController.updatePersonalPosts
 );
 

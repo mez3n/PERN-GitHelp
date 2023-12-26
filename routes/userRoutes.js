@@ -1,6 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/userController.js");
 const usersValidations = require("../models/usersValidations.js");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,10 +12,20 @@ router.get("/", userController.getAllUsers);
 router.get("/:id", userController.getUserById);
 
 // Create a new user
-router.post("/", usersValidations, userController.createUser);
+router.post(
+  "/",
+  usersValidations,
+  handleValidationErrors,
+  userController.createUser
+);
 
 // Update a user by ID
-router.put("/:id", usersValidations, userController.updateUser);
+router.put(
+  "/:id",
+  usersValidations,
+  handleValidationErrors,
+  userController.updateUser
+);
 
 // Delete a user by ID
 router.delete("/:id", userController.deleteUser);

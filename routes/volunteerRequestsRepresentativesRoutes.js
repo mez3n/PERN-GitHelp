@@ -1,6 +1,7 @@
 const express = require("express");
 const volunteerRequestsRepresentativesController = require("../controllers/volunteerRequestsRepresentativesController");
 const volunteerRequestsRepresentativesValidations = require("../models/volunteerRequestsRepresentativesValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.get(
 router.post(
   "/",
   volunteerRequestsRepresentativesValidations,
+  handleValidationErrors,
   volunteerRequestsRepresentativesController.createRequest
 );
 

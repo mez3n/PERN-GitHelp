@@ -1,6 +1,7 @@
 const express = require("express");
 const chatsController = require("../controllers/chatsController");
 const chatsValidations = require("../models/chatsValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,10 +12,20 @@ router.get("/", chatsController.getAllChats);
 router.get("/:chatId/:groupId", chatsController.getChatsById);
 
 // Create a new chat
-router.post("/", chatsValidations, chatsController.createChats);
+router.post(
+  "/",
+  chatsValidations,
+  handleValidationErrors,
+  chatsController.createChats
+);
 
 // Update a chat by ID
-router.put("/:chatId/:groupId", chatsValidations, chatsController.updateChats);
+router.put(
+  "/:chatId/:groupId",
+  chatsValidations,
+  handleValidationErrors,
+  chatsController.updateChats
+);
 
 // Delete a chat by ID
 router.delete("/:chatId/:groupId", chatsController.deleteChats);

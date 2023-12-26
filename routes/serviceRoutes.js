@@ -1,6 +1,7 @@
 const express = require("express");
 const serviceController = require("../controllers/serviceController");
 const serviceValidations = require("../models/serviceValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,11 +12,17 @@ router.get("/", serviceController.getAllServices);
 router.get("/:serviceId/:ppid/:pfid", serviceController.getServiceById);
 
 // Create a new service
-router.post("/", serviceValidations, serviceController.createService);
+router.post(
+  "/",
+  serviceValidations,
+  handleValidationErrors,
+  serviceController.createService
+);
 
 // Update a service by ID
 router.put(
   "/:serviceId/:ppid/:pfid",
+  handleValidationErrors,
   serviceValidations,
   serviceController.updateService
 );

@@ -1,6 +1,7 @@
 const express = require("express");
 const personalCommentsController = require("../controllers/personalCommentsController");
 const personalCommentsValidations = require("../models/personalCommentsValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.get("/:pcid", personalCommentsController.getPersonalCommentById);
 router.post(
   "/",
   personalCommentsValidations,
+  handleValidationErrors,
   personalCommentsController.createPersonalComment
 );
 
@@ -21,6 +23,7 @@ router.post(
 router.put(
   "/:pcid",
   personalCommentsValidations,
+  handleValidationErrors,
   personalCommentsController.updatePersonalComment
 );
 

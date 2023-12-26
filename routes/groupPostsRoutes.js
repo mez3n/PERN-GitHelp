@@ -1,6 +1,7 @@
 const express = require("express");
 const groupPostsController = require("../controllers/groupPostsController");
 const groupPostsValidations = require("../models/groupPostsValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,12 +12,18 @@ router.get("/", groupPostsController.getAllGroupPosts);
 router.get("/:GID/:gpid", groupPostsController.getGroupPostById);
 
 // Create a new group post
-router.post("/", groupPostsValidations, groupPostsController.createGroupPost);
+router.post(
+  "/",
+  groupPostsValidations,
+  handleValidationErrors,
+  groupPostsController.createGroupPost
+);
 
 // Update a group post by ID
 router.put(
   "/:GID/:gpid",
   groupPostsValidations,
+  handleValidationErrors,
   groupPostsController.updateGroupPost
 );
 

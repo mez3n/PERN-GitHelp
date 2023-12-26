@@ -1,6 +1,7 @@
 const express = require("express");
 const volunteerController = require("../controllers/volunteerController");
 const volunteerValidations = require("../models/volunteerValidations");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
@@ -11,12 +12,18 @@ router.get("/", volunteerController.getAllVolunteers);
 router.get("/:uid/:gcid", volunteerController.getVolunteerById);
 
 // Create a new volunteer
-router.post("/", volunteerValidations, volunteerController.createVolunteer);
+router.post(
+  "/",
+  volunteerValidations,
+  handleValidationErrors,
+  volunteerController.createVolunteer
+);
 
 // Update a volunteer by ID
 router.put(
   "/:uid/:gcid",
   volunteerValidations,
+  handleValidationErrors,
   volunteerController.updateVolunteer
 );
 
