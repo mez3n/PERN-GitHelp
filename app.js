@@ -25,6 +25,7 @@ const volunteerApplyServiceRoutes = require("./routes/volunteerApplyServiceRoute
 const volunteerJoinsGroupsRoutes = require("./routes/volunteerJoinsGroupsRoutes");
 const volunteerRequestsRepresentativesRoutes = require("./routes/volunteerRequestsRepresentativesRoutes");
 const volunteerRoutes = require("./routes/volunteerRoutes");
+const authRoutes = require("./routes/auth.route");
 
 const app = express();
 const port = 3000;
@@ -33,6 +34,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 // Routes
+app.use("/auth", authRoutes);
 app.use("/adminManagesGroups", adminManagesGroupsRoutes);
 app.use("/admin", adminRoutes);
 app.use("/chats", chatsRoutes);
@@ -63,7 +65,7 @@ app.use("/volunteer", volunteerRoutes);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  
+
   res.status(500).json({ error: "Internal Server Error" });
 });
 
