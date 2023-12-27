@@ -9,23 +9,25 @@ const router = express.Router();
 router.get("/", personalPostsController.getAllPersonalPosts);
 
 // Get a specific personal post by ID
-router.get("/:ppid/:pfid", personalPostsController.getPersonalPostsById);
+router.get("/:ppid/:uid", personalPostsController.getPersonalPostById);
 
 // Create a new personal post
 router.post(
   "/",
-  personalPostsValidations,handleValidationErrors,
-  personalPostsController.createPersonalPosts
+  personalPostsValidations,
+  handleValidationErrors,
+  personalPostsController.createPersonalPost
 );
 
 // Update a personal post by ID
 router.put(
-  "/:ppid/:pfid",
-  personalPostsValidations,handleValidationErrors,
-  personalPostsController.updatePersonalPosts
+  "/:ppid/:uid",
+  personalPostsValidations,
+  handleValidationErrors,
+  personalPostsController.updatePersonalPost
 );
 
 // Delete a personal post by ID
-router.delete("/:ppid/:pfid", personalPostsController.deletePersonalPosts);
+router.delete("/:ppid/:uid", personalPostsController.deletePersonalPost);
 
 module.exports = router;

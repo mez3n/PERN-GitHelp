@@ -2,28 +2,11 @@ const Service = require("../services/service");
 
 const serviceController = {
   getAllServices: async (req, res) => {
+    const event_owner_id = req.params.event_owner_id;
+
     try {
-      const services = await Service.getAllServices();
+      const services = await Service.getAllServices(event_owner_id);
       res.json({ services });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  },
-
-  getServiceById: async (req, res) => {
-    const serviceId = req.params.serviceId;
-    const ppid = req.params.ppid;
-    const pfid = req.params.pfid;
-
-    try {
-      const service = await Service.getServiceById(serviceId, ppid, pfid);
-
-      if (service) {
-        res.json(service);
-      } else {
-        res.status(404).json({ error: "Service not found" });
-      }
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -43,16 +26,16 @@ const serviceController = {
   },
 
   updateService: async (req, res) => {
-    const serviceId = req.params.serviceId;
-    const ppid = req.params.ppid;
-    const pfid = req.params.pfid;
+    const service_id = req.params.service_id;
+    const eid = req.params.eid;
+    const event_owner_id = req.params.event_owner_id;
     const updatedService = req.body;
 
     try {
       const service = await Service.updateService(
-        serviceId,
-        ppid,
-        pfid,
+        service_id,
+        eid,
+        event_owner_id,
         updatedService
       );
 
@@ -68,12 +51,16 @@ const serviceController = {
   },
 
   deleteService: async (req, res) => {
-    const serviceId = req.params.serviceId;
-    const ppid = req.params.ppid;
-    const pfid = req.params.pfid;
+    const service_id = req.params.service_id;
+    const eid = req.params.eid;
+    const event_owner_id = req.params.event_owner_id;
 
     try {
-      const deletedService = await Service.deleteService(serviceId, ppid, pfid);
+      const deletedService = await Service.deleteService(
+        service_id,
+        eid,
+        event_owner_id
+      );
 
       if (deletedService) {
         res.json({ message: "Service deleted successfully" });

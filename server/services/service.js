@@ -1,56 +1,49 @@
 const pool = require("../DB/db");
 
 class Service {
-  static async getAllServices() {
-    const result = await pool.query("SELECT * FROM service");
-    return result.rows;
-  }
-
-  static async getServiceById(serviceId, ppid, pfid) {
+  static async getAllServices(event_owner_id) {
     const result = await pool.query(
-      "SELECT * FROM service WHERE service_id = $1 AND ppid = $2 AND pfid = $3",
-      [serviceId, ppid, pfid]
+      "SELECT * FROM service WHERE event_owner_id = $1",
+      [event_owner_id]
     );
-    return result.rows[0];
+    return result.rows;
   }
 
   static async createService(newService) {
     const result = await pool.query(
-      "INSERT INTO service(start_date, end_date, type, ppid, pfid, uid) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+      "INSERT INTO service(start_date, end_date, event_owner_id, type, eid) VALUES($1, $2, $3, $4, $5) RETURNING *",
       [
         newService.start_date,
         newService.end_date,
+        newService.event_owner_id,
         newService.type,
-        newService.ppid,
-        newService.pfid,
-        newService.uid,
+        newService.eid,
       ]
     );
 
     return result.rows[0];
   }
 
-  static async updateService(serviceId, ppid, pfid, updatedService) {
+  static async updateService(service_id, eid, event_owner_id, updatedService) {
     const result = await pool.query(
-      "UPDATE service SET start_date = $2, end_date = $3, type = $4, ppid = $5, pfid = $6, uid = $7 WHERE service_id = $1 RETURNING *",
+      "UPDATE service SET start_date = $1, end_date = $2, type = $3 WHERE service_id = $4 AND eid = $5 AND event_owner_id = $6 RETURNING *",
       [
-        serviceId,
         updatedService.start_date,
         updatedService.end_date,
         updatedService.type,
-        updatedService.ppid,
-        updatedService.pfid,
-        updatedService.uid,
+        service_id,
+        eid,
+        event_owner_id,
       ]
     );
 
     return result.rows[0];
   }
 
-  static async deleteService(serviceId, ppid, pfid) {
+  static async deleteService(service_id, eid, event_owner_id) {
     const result = await pool.query(
-      "DELETE FROM service WHERE service_id = $1 AND ppid = $2 AND pfid = $3 RETURNING *",
-      [serviceId, ppid, pfid]
+      "DELETE FROM service WHERE service_id = $1 AND eid = $2 AND event_owner_id = $3 RETURNING *",
+      [service_id, eid, event_owner_id]
     );
     return result.rows[0];
   }

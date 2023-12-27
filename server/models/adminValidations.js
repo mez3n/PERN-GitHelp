@@ -1,14 +1,10 @@
 const { body } = require("express-validator");
 
 const adminValidations = [
-  body("username")
-    .isString()
+  body("uid")
+    .isInt()
     .notEmpty()
-    .withMessage("Username must be a non-empty string"),
-  body("password")
-    .isString()
-    .notEmpty()
-    .withMessage("Password must be a non-empty string"),
+    .withMessage("User ID must be a non-empty integer"),
 ];
 
 module.exports = adminValidations;

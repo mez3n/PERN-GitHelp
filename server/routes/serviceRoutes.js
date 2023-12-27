@@ -6,10 +6,7 @@ const handleValidationErrors = require("../middlewares/handleValidationErrors");
 const router = express.Router();
 
 // Get all services
-router.get("/", serviceController.getAllServices);
-
-// Get a specific service by ID
-router.get("/:serviceId/:ppid/:pfid", serviceController.getServiceById);
+router.get("/:event_owner_id", serviceController.getAllServices);
 
 // Create a new service
 router.post(
@@ -21,13 +18,16 @@ router.post(
 
 // Update a service by ID
 router.put(
-  "/:serviceId/:ppid/:pfid",
-  handleValidationErrors,
+  "/:service_id/:eid/:event_owner_id",
   serviceValidations,
+  handleValidationErrors,
   serviceController.updateService
 );
 
 // Delete a service by ID
-router.delete("/:serviceId/:ppid/:pfid", serviceController.deleteService);
+router.delete(
+  "/:service_id/:eid/:event_owner_id",
+  serviceController.deleteService
+);
 
 module.exports = router;

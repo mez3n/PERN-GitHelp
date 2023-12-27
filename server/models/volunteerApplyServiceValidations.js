@@ -1,3 +1,4 @@
+// volunteerApplyServiceValidations.js
 const { body } = require("express-validator");
 
 const volunteerApplyServiceValidations = [
@@ -5,19 +6,26 @@ const volunteerApplyServiceValidations = [
     .isInt()
     .notEmpty()
     .withMessage("Amount must be a non-empty integer"),
+  body("blood_type")
+    .isString()
+    .notEmpty()
+    .withMessage("Blood Type must be a non-empty string"),
   body("service_id")
     .isInt()
     .notEmpty()
-    .withMessage("service_id must be a non-empty integer"),
-  body("ppid")
+    .withMessage("Service ID must be a non-empty integer"),
+  body("eid")
     .isInt()
     .notEmpty()
-    .withMessage("ppid must be a non-empty integer"),
-  body("pfid")
+    .withMessage("Event ID must be a non-empty integer"),
+  body("event_owner_id")
     .isInt()
     .notEmpty()
-    .withMessage("pfid must be a non-empty integer"),
-  body("uid").isInt().notEmpty().withMessage("uid must be a non-empty integer"),
+    .withMessage("Event Owner ID must be a non-empty integer"),
+  body("uid")
+    .isInt()
+    .notEmpty()
+    .withMessage("User ID must be a non-empty integer"),
 ];
 
 module.exports = volunteerApplyServiceValidations;

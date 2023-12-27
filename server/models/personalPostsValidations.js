@@ -5,19 +5,16 @@ const personalPostsValidations = [
     .isInt()
     .notEmpty()
     .withMessage("ppid must be a non-empty integer"),
-  body("date")
-    .isISO8601()
+  body("uid").isInt().notEmpty().withMessage("uid must be a non-empty integer"),
+  body("date").isISO8601().notEmpty().withMessage("Invalid date format"),
+  body("text")
+    .isString()
     .notEmpty()
-    .withMessage("Date must be a non-empty ISO8601 timestamp"),
-  body("text").notEmpty().withMessage("Text must not be empty"),
-  body("pfid")
-    .isInt()
-    .notEmpty()
-    .withMessage("pfid must be a non-empty integer"),
+    .withMessage("Text must be a non-empty string"),
   body("image_id")
     .optional()
     .isInt()
-    .withMessage("image_id must be an integer"),
+    .withMessage("Image ID must be an integer"),
 ];
 
 module.exports = personalPostsValidations;

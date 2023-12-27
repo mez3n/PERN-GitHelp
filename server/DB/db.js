@@ -6,7 +6,7 @@ const password = process.env.DB_PASSWORD;
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "Project_omar_before_modification",
+  database: "project_V3",
   password: password,
   port: 5432,
 });

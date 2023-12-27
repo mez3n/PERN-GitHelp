@@ -5,11 +5,8 @@ const handleValidationErrors = require("../middlewares/handleValidationErrors");
 
 const router = express.Router();
 
-// Get all representatives
-router.get("/", representativesController.getAllRepresentatives);
-
-// Get a specific representative by ID
-router.get("/:repId", representativesController.getRepresentativeById);
+// Get a representative by UID
+router.get("/:uid", representativesController.getRepresentativeByUid);
 
 // Create a new representative
 router.post(
@@ -19,15 +16,15 @@ router.post(
   representativesController.createRepresentative
 );
 
-// Update a representative by ID
+// Update a representative by UID
 router.put(
-  "/:repId",
+  "/:uid",
   representativesValidations,
   handleValidationErrors,
   representativesController.updateRepresentative
 );
 
-// Delete a representative by ID
-router.delete("/:repId", representativesController.deleteRepresentative);
+// Delete a representative by UID
+router.delete("/:uid", representativesController.deleteRepresentative);
 
 module.exports = router;

@@ -1,44 +1,56 @@
 const pool = require("../DB/db");
 
-class PersonalPosts {
+class PersonalPost {
   static async getAllPersonalPosts() {
     const result = await pool.query("SELECT * FROM personal_posts");
     return result.rows;
   }
 
-  static async getPersonalPostsById(ppid, pfid) {
+  static async getPersonalPostById(ppid, uid) {
     const result = await pool.query(
-      "SELECT * FROM personal_posts WHERE ppid = $1 AND pfid = $2",
-      [ppid, pfid]
+      "SELECT * FROM personal_posts WHERE ppid = $1 AND uid = $2",
+      [ppid, uid]
     );
     return result.rows[0];
   }
 
-  static async createPersonalPosts(newPost) {
+  static async createPersonalPost(newPersonalPost) {
     const result = await pool.query(
-      "INSERT INTO personal_posts(ppid, date, text, pfid, image_id) VALUES($1, $2, $3, $4, $5) RETURNING *",
-      [newPost.ppid, newPost.date, newPost.text, newPost.pfid, newPost.image_id]
-    );
-
-    return result.rows[0];
-  }
-
-  static async updatePersonalPosts(ppid, pfid, updatedPost) {
-    const result = await pool.query(
-      "UPDATE personal_posts SET date = $2, text = $3, image_id = $4 WHERE pfid = $5 AND ppid = $1 RETURNING *",
-      [ppid, updatedPost.date, updatedPost.text, updatedPost.image_id, pfid]
+      "INSERT INTO personal_posts(ppid, date, text, uid, image_id) VALUES($1, $2, $3, $4, $5) RETURNING *",
+      [
+        newPersonalPost.ppid,
+        newPersonalPost.date,
+        newPersonalPost.text,
+        newPersonalPost.uid,
+        newPersonalPost.image_id,
+      ]
     );
 
     return result.rows[0];
   }
 
-  static async deletePersonalPosts(ppid, pfid) {
+  static async updatePersonalPost(ppid, uid, updatedPersonalPost) {
     const result = await pool.query(
-      "DELETE FROM personal_posts WHERE ppid = $1 AND pfid = $2 RETURNING *",
-      [ppid, pfid]
+      "UPDATE personal_posts SET date = $2, text = $3, image_id = $4 WHERE ppid = $1 AND uid = $5 RETURNING *",
+      [
+        ppid,
+        updatedPersonalPost.date,
+        updatedPersonalPost.text,
+        updatedPersonalPost.image_id,
+        uid,
+      ]
+    );
+
+    return result.rows[0];
+  }
+
+  static async deletePersonalPost(ppid, uid) {
+    const result = await pool.query(
+      "DELETE FROM personal_posts WHERE ppid = $1 AND uid = $2 RETURNING *",
+      [ppid, uid]
     );
     return result.rows[0];
   }
 }
 
-module.exports = PersonalPosts;
+module.exports = PersonalPost;

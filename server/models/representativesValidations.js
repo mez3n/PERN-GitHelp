@@ -1,15 +1,18 @@
 const { body } = require("express-validator");
 
 const representativesValidations = [
-  body("name")
+  body("experiences")
+    .optional()
     .isString()
+    .withMessage("Experiences must be a string"),
+
+  body("GID").optional().isInt().withMessage("GID must be an integer"),
+
+  body("uid")
     .notEmpty()
-    .withMessage("Name must be a non-empty string"),
-  body("phone_number")
+    .withMessage("User ID must be a non-empty")
     .isInt()
-    .notEmpty()
-    .withMessage("Phone number must be a non-empty integer"),
-  body("uid").isInt().notEmpty().withMessage("uid must be a non-empty integer"),
+    .withMessage("User ID must be an integer"),
 ];
 
 module.exports = representativesValidations;

@@ -1,25 +1,25 @@
-const PersonalPosts = require("../services/personalPosts");
+const PersonalPost = require("../services/personalPosts");
 
 const personalPostsController = {
   getAllPersonalPosts: async (req, res) => {
     try {
-      const posts = await PersonalPosts.getAllPersonalPosts();
-      res.json({ posts });
+      const personalPosts = await PersonalPost.getAllPersonalPosts();
+      res.json({ personalPosts });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
-  getPersonalPostsById: async (req, res) => {
+  getPersonalPostById: async (req, res) => {
     const ppid = req.params.ppid;
-    const pfid = req.params.pfid;
+    const uid = req.params.uid;
 
     try {
-      const post = await PersonalPosts.getPersonalPostsById(ppid, pfid);
+      const personalPost = await PersonalPost.getPersonalPostById(ppid, uid);
 
-      if (post) {
-        res.json(post);
+      if (personalPost) {
+        res.json(personalPost);
       } else {
         res.status(404).json({ error: "Personal Post not found" });
       }
@@ -29,32 +29,34 @@ const personalPostsController = {
     }
   },
 
-  createPersonalPosts: async (req, res) => {
-    const newPost = req.body;
+  createPersonalPost: async (req, res) => {
+    const newPersonalPost = req.body;
 
     try {
-      const createdPost = await PersonalPosts.createPersonalPosts(newPost);
-      res.status(201).json(createdPost);
+      const createdPersonalPost = await PersonalPost.createPersonalPost(
+        newPersonalPost
+      );
+      res.status(201).json(createdPersonalPost);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   },
 
-  updatePersonalPosts: async (req, res) => {
+  updatePersonalPost: async (req, res) => {
     const ppid = req.params.ppid;
-    const pfid = req.params.pfid;
-    const updatedPost = req.body;
+    const uid = req.params.uid;
+    const updatedPersonalPost = req.body;
 
     try {
-      const post = await PersonalPosts.updatePersonalPosts(
+      const personalPost = await PersonalPost.updatePersonalPost(
         ppid,
-        pfid,
-        updatedPost
+        uid,
+        updatedPersonalPost
       );
 
-      if (post) {
-        res.json(post);
+      if (personalPost) {
+        res.json(personalPost);
       } else {
         res.status(404).json({ error: "Personal Post not found" });
       }
@@ -64,14 +66,17 @@ const personalPostsController = {
     }
   },
 
-  deletePersonalPosts: async (req, res) => {
+  deletePersonalPost: async (req, res) => {
     const ppid = req.params.ppid;
-    const pfid = req.params.pfid;
+    const uid = req.params.uid;
 
     try {
-      const deletedPost = await PersonalPosts.deletePersonalPosts(ppid, pfid);
+      const deletedPersonalPost = await PersonalPost.deletePersonalPost(
+        ppid,
+        uid
+      );
 
-      if (deletedPost) {
+      if (deletedPersonalPost) {
         res.json({ message: "Personal Post deleted successfully" });
       } else {
         res.status(404).json({ error: "Personal Post not found" });

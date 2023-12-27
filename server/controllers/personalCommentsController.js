@@ -1,29 +1,16 @@
-const PersonalComments = require("../services/personalComments");
+const PersonalComment = require("../services/personalComments");
 
 const personalCommentsController = {
   getAllPersonalComments: async (req, res) => {
-    try {
-      const personalComments = await PersonalComments.getAllPersonalComments();
-      res.json({ personalComments });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  },
-
-  getPersonalCommentById: async (req, res) => {
-    const pcid = req.params.pcid;
+    const ppid = req.params.ppid;
+    const post_owner_uid = req.params.post_owner_uid;
 
     try {
-      const personalComment = await PersonalComments.getPersonalCommentById(
-        pcid
+      const personalComments = await PersonalComment.getAllPersonalComments(
+        ppid,
+        post_owner_uid
       );
-
-      if (personalComment) {
-        res.json(personalComment);
-      } else {
-        res.status(404).json({ error: "Personal Comment not found" });
-      }
+      res.json({ personalComments });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -35,7 +22,7 @@ const personalCommentsController = {
 
     try {
       const createdPersonalComment =
-        await PersonalComments.createPersonalComment(newPersonalComment);
+        await PersonalComment.createPersonalComment(newPersonalComment);
       res.status(201).json(createdPersonalComment);
     } catch (error) {
       console.error(error);
@@ -44,12 +31,16 @@ const personalCommentsController = {
   },
 
   updatePersonalComment: async (req, res) => {
+    const ppid = req.params.ppid;
     const pcid = req.params.pcid;
+    const post_owner_uid = req.params.post_owner_uid;
     const updatedPersonalComment = req.body;
 
     try {
-      const personalComment = await PersonalComments.updatePersonalComment(
+      const personalComment = await PersonalComment.updatePersonalComment(
+        ppid,
         pcid,
+        post_owner_uid,
         updatedPersonalComment
       );
 
@@ -65,11 +56,13 @@ const personalCommentsController = {
   },
 
   deletePersonalComment: async (req, res) => {
+    const ppid = req.params.ppid;
     const pcid = req.params.pcid;
+    const post_owner_uid = req.params.post_owner_uid;
 
     try {
       const deletedPersonalComment =
-        await PersonalComments.deletePersonalComment(pcid);
+        await PersonalComment.deletePersonalComment(ppid, pcid, post_owner_uid);
 
       if (deletedPersonalComment) {
         res.json({ message: "Personal Comment deleted successfully" });

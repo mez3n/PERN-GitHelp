@@ -16,8 +16,13 @@ class Organization {
 
   static async createOrganization(newOrganization) {
     const result = await pool.query(
-      "INSERT INTO Organization(uid, location, A_ID) VALUES($1, $2, $3) RETURNING *",
-      [newOrganization.uid, newOrganization.location, newOrganization.A_ID]
+      "INSERT INTO Organization(uid, location, A_ID, approved) VALUES($1, $2, $3, $4) RETURNING *",
+      [
+        newOrganization.uid,
+        newOrganization.location,
+        newOrganization.A_ID,
+        newOrganization.approved,
+      ]
     );
 
     return result.rows[0];
@@ -25,8 +30,13 @@ class Organization {
 
   static async updateOrganization(organizationId, updatedOrganization) {
     const result = await pool.query(
-      "UPDATE Organization SET location = $2, A_ID = $3 WHERE uid = $1 RETURNING *",
-      [organizationId, updatedOrganization.location, updatedOrganization.A_ID]
+      "UPDATE Organization SET location = $2, A_ID = $3, approved = $4 WHERE uid = $1 RETURNING *",
+      [
+        organizationId,
+        updatedOrganization.location,
+        updatedOrganization.A_ID,
+        updatedOrganization.approved,
+      ]
     );
 
     return result.rows[0];
