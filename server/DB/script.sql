@@ -51,7 +51,7 @@ CREATE TABLE Organization (
   uid SERIAL PRIMARY KEY,
   location TEXT NOT NULL,
   A_ID INT NOT NULL,
-  approved bit Default 0,
+  approved bit,
   FOREIGN KEY (uid) REFERENCES Users(uid) on DELETE CASCADE,
   FOREIGN KEY (A_ID) REFERENCES Admin(uid) on DELETE restrict
 );
@@ -268,7 +268,7 @@ OR REPLACE FUNCTION get_user_by_id(p_user_id INT) RETURNS TABLE (
   bio TEXT,
   image_id INT,
   type VARCHAR(50)
-) AS $ $ BEGIN RETURN QUERY
+) AS $$ BEGIN RETURN QUERY
 SELECT
   uid,
   user_name,
@@ -285,11 +285,11 @@ WHERE
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------
 CREATE
-OR REPLACE FUNCTION update_user_bio(p_user_id INT, p_new_bio TEXT) RETURNS VOID AS $ $ BEGIN
+OR REPLACE FUNCTION update_user_bio(p_user_id INT, p_new_bio TEXT) RETURNS VOID AS $$ BEGIN
 UPDATE
   Users
 SET
@@ -299,7 +299,7 @@ WHERE
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------
 CREATE
@@ -307,7 +307,7 @@ OR REPLACE FUNCTION insert_event(
   p_content TEXT,
   p_event_owner_id INT,
   p_image_id INT
-) RETURNS VOID AS $ $ BEGIN
+) RETURNS VOID AS $$ BEGIN
 INSERT INTO
   events (content, event_owner_id, image_id)
 VALUES
@@ -315,11 +315,11 @@ VALUES
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------
 CREATE
-OR REPLACE FUNCTION get_organization_location(p_organization_id INT) RETURNS TEXT AS $ $ DECLARE org_location TEXT;
+OR REPLACE FUNCTION get_organization_location(p_organization_id INT) RETURNS TEXT AS $$ DECLARE org_location TEXT;
 
 BEGIN
 SELECT
@@ -333,11 +333,11 @@ RETURN org_location;
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------
 CREATE
-OR REPLACE FUNCTION assign_postman_to_order(p_order_id INT, p_postman_id INT) RETURNS VOID AS $ $ BEGIN
+OR REPLACE FUNCTION assign_postman_to_order(p_order_id INT, p_postman_id INT) RETURNS VOID AS $$ BEGIN
 UPDATE
   orders
 SET
@@ -347,7 +347,7 @@ WHERE
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------
 CREATE
@@ -355,7 +355,7 @@ OR REPLACE FUNCTION get_group_members(p_group_id INT) RETURNS TABLE (
   user_id INT,
   user_name VARCHAR(50),
   name TEXT
-) AS $ $ BEGIN RETURN QUERY
+) AS $$ BEGIN RETURN QUERY
 SELECT
   U.uid,
   U.user_name,
@@ -368,7 +368,7 @@ WHERE
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -------------------------------------------------------------------------------------------------
 CREATE
@@ -381,7 +381,7 @@ OR REPLACE FUNCTION insert_user(
   p_bio TEXT,
   p_image_id INT,
   p_type VARCHAR(50)
-) RETURNS VOID AS $ $ BEGIN
+) RETURNS VOID AS $$ BEGIN
 INSERT INTO
   Users (
     user_name,
@@ -407,11 +407,11 @@ VALUES
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 ----------------------------------------------------------------------------------------------------
 CREATE
-OR REPLACE FUNCTION get_volunteer_requests() RETURNS TABLE (uid INT, p_id INT) AS $ $ BEGIN RETURN QUERY
+OR REPLACE FUNCTION get_volunteer_requests() RETURNS TABLE (uid INT, p_id INT) AS $$ BEGIN RETURN QUERY
 SELECT
   uid,
   p_id
@@ -420,14 +420,14 @@ FROM
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 -----------------------------------------------------------------------------------------------------
 CREATE
 OR REPLACE FUNCTION update_service_end_date(
   p_service_id INT,
   p_new_end_date TIMESTAMP
-) RETURNS VOID AS $ $ BEGIN
+) RETURNS VOID AS $$ BEGIN
 UPDATE
   service
 SET
@@ -437,7 +437,7 @@ WHERE
 
 END;
 
-$ $ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 --------------------------------------------------must be reviewed-------------------------------
 -- Insert for "Group" table

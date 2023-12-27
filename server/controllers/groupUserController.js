@@ -1,4 +1,4 @@
-const GroupUser = require("../models/groupUser");
+const GroupUser = require("../services/groupUser");
 
 const groupUserController = {
   getAllGroupUsers: async (req, res) => {
