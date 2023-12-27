@@ -13,10 +13,8 @@ const volunteerController = {
 
   getVolunteerById: async (req, res) => {
     const uid = req.params.uid;
-    const gcid = req.params.gcid;
-
     try {
-      const volunteer = await Volunteer.getVolunteerById(uid, gcid);
+      const volunteer = await Volunteer.getVolunteerById(uid);
 
       if (volunteer) {
         res.json(volunteer);
@@ -43,15 +41,10 @@ const volunteerController = {
 
   updateVolunteer: async (req, res) => {
     const uid = req.params.uid;
-    const gcid = req.params.gcid;
     const updatedVolunteer = req.body;
 
     try {
-      const volunteer = await Volunteer.updateVolunteer(
-        uid,
-        gcid,
-        updatedVolunteer
-      );
+      const volunteer = await Volunteer.updateVolunteer(uid, updatedVolunteer);
 
       if (volunteer) {
         res.json(volunteer);
@@ -66,10 +59,9 @@ const volunteerController = {
 
   deleteVolunteer: async (req, res) => {
     const uid = req.params.uid;
-    const gcid = req.params.gcid;
 
     try {
-      const deletedVolunteer = await Volunteer.deleteVolunteer(uid, gcid);
+      const deletedVolunteer = await Volunteer.deleteVolunteer(uid);
 
       if (deletedVolunteer) {
         res.json({ message: "Volunteer deleted successfully" });

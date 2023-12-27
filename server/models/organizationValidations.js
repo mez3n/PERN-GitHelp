@@ -7,6 +7,10 @@ const organizationValidations = [
     .isInt()
     .notEmpty()
     .withMessage("A_ID must be a non-empty integer"),
+  body("approved")
+    .isBoolean()
+    .optional()
+    .withMessage("Approved must be a boolean"),
 ];
 
 module.exports = organizationValidations;

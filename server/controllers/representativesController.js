@@ -1,27 +1,12 @@
-const Representatives = require("../services/representatives");
+const Representative = require("../services/Representative");
 
 const representativesController = {
-  getAllRepresentatives: async (req, res) => {
-    try {
-      const representatives = await Representatives.getAllRepresentatives();
-      res.json({ representatives });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  },
-
-  getRepresentativeById: async (req, res) => {
-    const repId = req.params.repId;
+  getRepresentativeByUid: async (req, res) => {
+    const uid = req.params.uid;
 
     try {
-      const representative = await Representatives.getRepresentativeById(repId);
-
-      if (representative) {
-        res.json(representative);
-      } else {
-        res.status(404).json({ error: "Representative not found" });
-      }
+      const representative = await Representative.getRepresentativeByUid(uid);
+      res.json({ representative });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -32,7 +17,7 @@ const representativesController = {
     const newRepresentative = req.body;
 
     try {
-      const createdRepresentative = await Representatives.createRepresentative(
+      const createdRepresentative = await Representative.createRepresentative(
         newRepresentative
       );
       res.status(201).json(createdRepresentative);
@@ -43,12 +28,12 @@ const representativesController = {
   },
 
   updateRepresentative: async (req, res) => {
-    const repId = req.params.repId;
+    const uid = req.params.uid;
     const updatedRepresentative = req.body;
 
     try {
-      const representative = await Representatives.updateRepresentative(
-        repId,
+      const representative = await Representative.updateRepresentative(
+        uid,
         updatedRepresentative
       );
 
@@ -64,11 +49,11 @@ const representativesController = {
   },
 
   deleteRepresentative: async (req, res) => {
-    const repId = req.params.repId;
+    const uid = req.params.uid;
 
     try {
-      const deletedRepresentative = await Representatives.deleteRepresentative(
-        repId
+      const deletedRepresentative = await Representative.deleteRepresentative(
+        uid
       );
 
       if (deletedRepresentative) {

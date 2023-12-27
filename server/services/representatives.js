@@ -1,53 +1,43 @@
 const pool = require("../DB/db");
 
-class Representatives {
-  static async getAllRepresentatives() {
-    const result = await pool.query("SELECT * FROM Representatives");
-    return result.rows;
-  }
-
-  static async getRepresentativeById(repId) {
+class Representative {
+  static async getRepresentativeByUid(uid) {
     const result = await pool.query(
-      "SELECT * FROM Representatives WHERE rep_id = $1",
-      [repId]
+      "SELECT * FROM Representative WHERE uid = $1",
+      [uid]
     );
     return result.rows[0];
   }
 
   static async createRepresentative(newRepresentative) {
     const result = await pool.query(
-      "INSERT INTO Representatives(name, phone_number, uid) VALUES($1, $2, $3) RETURNING *",
+      "INSERT INTO Representative(uid, experiences, GID) VALUES($1, $2, $3) RETURNING *",
       [
-        newRepresentative.name,
-        newRepresentative.phone_number,
         newRepresentative.uid,
+        newRepresentative.experiences,
+        newRepresentative.GID,
       ]
     );
 
     return result.rows[0];
   }
 
-  static async updateRepresentative(repId, updatedRepresentative) {
+  static async updateRepresentative(uid, updatedRepresentative) {
     const result = await pool.query(
-      "UPDATE Representatives SET name = $2, phone_number = $3, uid = $4 WHERE rep_id = $1 RETURNING *",
-      [
-        repId,
-        updatedRepresentative.name,
-        updatedRepresentative.phone_number,
-        updatedRepresentative.uid,
-      ]
+      "UPDATE Representative SET experiences = $1, GID = $2 WHERE uid = $3 RETURNING *",
+      [updatedRepresentative.experiences, updatedRepresentative.GID, uid]
     );
 
     return result.rows[0];
   }
 
-  static async deleteRepresentative(repId) {
+  static async deleteRepresentative(uid) {
     const result = await pool.query(
-      "DELETE FROM Representatives WHERE rep_id = $1 RETURNING *",
-      [repId]
+      "DELETE FROM Representative WHERE uid = $1 RETURNING *",
+      [uid]
     );
     return result.rows[0];
   }
 }
 
-module.exports = Representatives;
+module.exports = Representative;

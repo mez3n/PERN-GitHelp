@@ -6,10 +6,10 @@ const handleValidationErrors = require("../middlewares/handleValidationErrors");
 const router = express.Router();
 
 // Get all personal comments
-router.get("/", personalCommentsController.getAllPersonalComments);
-
-// Get a specific personal comment by ID
-router.get("/:pcid", personalCommentsController.getPersonalCommentById);
+router.get(
+  "/:ppid/:post_owner_uid",
+  personalCommentsController.getAllPersonalComments
+);
 
 // Create a new personal comment
 router.post(
@@ -21,13 +21,16 @@ router.post(
 
 // Update a personal comment by ID
 router.put(
-  "/:pcid",
+  "/:ppid/:pcid/:post_owner_uid",
   personalCommentsValidations,
   handleValidationErrors,
   personalCommentsController.updatePersonalComment
 );
 
 // Delete a personal comment by ID
-router.delete("/:pcid", personalCommentsController.deletePersonalComment);
+router.delete(
+  "/:ppid/:pcid/:post_owner_uid",
+  personalCommentsController.deletePersonalComment
+);
 
 module.exports = router;
