@@ -1,0 +1,18 @@
+.sidebarFriend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #605d5d;
+    border-radius: 25px;
+  }
+  .sidebarFriend{
+    text-decoration: none;
+    color: black;
+  }
+  .sidebarFriendImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }

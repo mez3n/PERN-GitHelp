@@ -1,0 +1,557 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.body{
+    background-color: #1f242b;
+}
+.hh{
+    background-color: #1f242f;
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    z-index: 50;
+}
+.hh ul{
+    list-style: none;
+    font-size: 1rem;
+}
+.hh li{
+    display: inline-block ;
+    margin: 0 25px;
+}
+.hh a{
+    text-decoration: none;
+    color: white;
+}
+.hh a.active{
+    color: #0ef;
+}
+.hh a:hover{
+    color:#0ef ;
+}
+#menuicon{
+    font-size: 3.6rem;
+    color: white;
+    display: none;
+}
+.Brand{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.CV{
+    background-color: #0ef;
+    color: #1f242b;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 1rem #0ef;
+    font-weight: 600;
+    transition: .5s;
+}
+.CV:hover{
+    background-color: #0ef;
+    color: #1f242b;
+    box-shadow: none;
+}
+#Home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 9% 0;
+    gap: 20px;
+    color: white;
+    height: 95vh;
+    margin-bottom:86px ;
+}
+.me h3{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.me h1{
+    font-size: 5rem;
+    font-weight: 700;
+}
+.me p{
+    font-size: 1rem;
+    margin-top: 20px;
+}
+.khater{
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    animation: float 4s infinite ease-in-out;
+}
+.mylinks a{
+    /* this style i take it from website it isn't mine but i learn it */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border: .2rem solid #0ef;
+    border-radius: 50%;
+    color: #0ef;
+    margin: 3rem 20px;
+    width: 4rem;
+    height: 4rem;
+    transition: .5s;
+}
+.mylinks a:hover{
+    background-color:#0ef ;
+    color:#1f242b;
+    box-shadow: 0 0 1rem #0ef;
+}
+#about{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 150px 100px;
+    background-color: #242a31 ;
+    height: 100vh;
+}
+.aboutme h5{
+    font-size: 25px;
+}
+.home a{
+    text-decoration: none;
+}
+.aboutme h1{
+    font-size: 4rem;
+    font-weight: 700;
+}
+.aboutme p{
+    font-size: 1rem;
+margin-top: 20px;
+}
+.aboutme a{
+    position: relative;
+    top: 40px;
+}
+.projects{
+    width: 300px;
+    height: 50px;
+    background-color: #0ef;
+    margin: 20px 0;
+    line-height: 50px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 1rem #0ef;
+    font-weight: 600;
+    transition: .5s;
+}
+.projects:hover{
+    background-color: #0ef;
+    color: #1f242b;
+    box-shadow: none;
+}
+.experience{
+    width: 300px;
+    height: 50px;
+    background-color: #0ef;
+    margin: 20px 0;
+    line-height: 50px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 1rem #0ef;
+    font-weight: 600;
+    transition: .5s;
+}
+.experience:hover{
+    background-color: #0ef;
+    color: #323946;
+    box-shadow: none;
+}
+a.active{
+    color:red;
+}
+.projects div{
+    display: inline-block;
+    position: relative;
+    top: -40px;
+    color:#1f242b ;
+}
+.experience div{
+    display: inline-block;
+    position: relative;
+    top: -40px;
+    color: #1f242b;
+}
+.bx-right-arrow-alt{
+    background-color: #1f242b;
+    position: relative;
+    top: -38px;
+    font-size: 17px;
+    color: #0fe;
+    border: 1px solid #1f242b;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+#services{
+    padding: 150px;
+    text-align: center;
+    color: white;
+}
+.ser{
+    font-size: 2rem;
+}
+.head1{
+    font-size: 3.5rem;
+    
+    margin: 8px;
+
+}
+.services p{
+    margin: auto;
+    width: 80%;
+}
+.SERVES{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 100px 0;
+}
+.two{
+    font-size: small;
+    font-weight: 200;
+}
+.iconnn{
+    position: relative;
+    left: 67px;
+    top: 5px;
+    color: #0ef;
+    font-size: 50px;
+}
+.front{
+    display: grid;
+    grid-template-rows: 2fr 1fr 2fr;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background-color:#1f242b;
+    border: .2rem solid #0ef;
+    padding: 25px;
+    color:#0ef ;
+    font-weight: 600;
+    transition: .5s;
+}
+.front:hover{
+    transform: scale(1.1);
+    background-color: #0ef;
+    color:#1f242b ;
+    box-shadow: 0 0 1rem #0ef;
+}
+#bodyweb #protfoilo{
+    text-align: center;
+    background-color: #242a31 ;
+    padding: 100px 50px;
+    margin: auto;
+    color: white;
+}
+#bodyweb #protfoilo h4{
+    font-size: 2rem;
+}
+#bodyweb #protfoilo h1{
+    font-size: 5rem;
+    color: white;
+    margin: 10px;
+}
+#bodyweb .project button{
+    width: 100px;
+    height: 30px;
+    margin: 0 20px;
+    background-color: white;
+    font-weight: 500;
+    border: 2px solid #0ef;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#bodyweb .project .active{
+    background-color: #0ef;
+}
+#cosec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 50px 0 50px;
+    background-color:#1f242b;
+}
+.close{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.close i{
+    font-size:35px;
+}
+.close i:hover{
+   background-color: #0ef;
+}
+
+.thankyou{
+    border-radius: 40px;
+    position: absolute;
+    right: 41%;
+    box-shadow: 0 0 10px #0ef;
+    background-color: #0ef;
+    color: #1f242b;
+    width:330px;
+    height: 180px;
+    padding: 36px;
+    border: rgba(255,255,255,.2) solid 2px;
+    text-align: center;
+}
+.thankyou i{
+    font-size: 44px;
+}
+.thankyou p{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+}
+.th{
+    position: absolute;
+    background-color: #1f242b;
+    opacity: .96;
+    min-height: 90vh;
+    width: 98vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+.formsection{
+    position: absolute;
+    background-color: #1f242b;
+    opacity: .96;
+    min-height: 90vh;
+    width: 98vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+.wrapper{
+    color: #0ef;
+    width: 425px;
+    border-radius: 9px;
+    padding: 30px 40px;
+    border: 2px solid rgba(254,254,254,.2);
+}
+.wrapper h1{
+    font-size: 30px;
+    text-align: center;
+}
+.h{
+    display: none;
+   opacity: 0;
+}
+.wrapper .input{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    margin: 29px 0;
+}
+.input input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 39px;
+    border: 2px solid rgba(254,254,254,.2);
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+}
+.input input::placeholder{
+    color: #0ef;
+}
+.input i{
+    position: absolute;
+    right: 19px;
+    top:50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+.btn{
+    width: 100%;
+    border-radius: 38px;
+    background-color: #0ef;
+    height: 40px;
+    font-weight: 600;
+    color: #1f242b;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.textarea{
+    font-size: 13.5px;
+    color: white;
+    background-color: #1f242b;
+    border: rgba(255,255,255,.2) solid 1px;
+    border-radius: 20px ;
+    padding: 20px;
+    resize:none;
+}
+.textarea::placeholder{
+    color: #0ef;
+    font-size: 16px;
+}
+#cosec h1{
+    color: white;
+    font-size: 4rem;
+    font-weight: 600;
+}
+#cosec p{
+    color: white;
+    font-size: 1rem;
+}
+.contactbutton{
+    width: 200px;
+    height: 50px;
+    position: relative;
+    top: 60px;
+    background-color: #0ef;
+    font-size: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 1rem #0ef;
+    font-weight: 600;
+    transition: .5s;
+}
+.contactbutton:hover{
+background-color: #0ef;
+color: #1f242b;
+box-shadow: none;
+}
+#bodyweb .foott{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f242f;
+}
+#bodyweb .foott .contentfooter{
+    padding: 20px;
+    color: white;
+    font-size: 1.5rem;
+}
+#bodyweb .foott .icon a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border: .2rem solid #0ef;
+    color: #0ef;
+    margin:  25px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
+    transition: .5s;
+}
+#bodyweb .foott .icon a:hover{
+    background-color:#0ef ;
+    color:#1f242b;
+    box-shadow: 0 0 1rem #0ef;
+}
+ @keyframes float {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-2.5rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+#bodyweb .imgproject{
+    width: 500px;
+    height: 500px;
+}
+#bodyweb .projectscontainer{
+    padding: 50px;
+    width: 64%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    margin: auto;
+    height: 600px;
+    align-items: center;
+}
+#bodyweb .pt{
+    translate: 0 -127px;
+}
+#bodyweb .sss{
+    translate: 0 -80px;
+
+}
+#bodyweb .oopproject{
+    position: relative;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 15px #0ef;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+#bodyweb #protfoilo h4{
+    font-size: 40px;
+}
+#bodyweb #protfoilo p{
+    font-size: 12px;
+}
+#bodyweb .oopproject img{
+    width: 100%;
+    transition: .5s ease;
+}
+#bodyweb .oopproject img:hover{
+    transform: scale(1.1);
+}
+#bodyweb .oopproject .layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(rgba(0,0,0,.1),#0ef);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+ .hide{
+    display: none;
+}
+#bodyweb .oopimg{
+    translate: 0 -100px;
+}
+#bodyweb .processorimg{
+    translate: 5px;
+}
+#bodyweb .oopproject:hover .layer{
+    transform: translateY(0);
+}
+#bodyweb .layer a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 7px;
+    background-color: white;
+    color: #0ef;
+    border-radius: 50%;
+}
+#bodyweb .layer a .bx-link-external{
+    color: #1f242b;
+}

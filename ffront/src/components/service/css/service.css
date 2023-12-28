@@ -1,0 +1,21 @@
+.servicehandler{
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    font-size: 18px;
+    font-weight: 600;
+}
+  
+  .servicehandler:hover {
+    background-color: #e0e0e0;
+  }
+  .servicelink{
+    color: black;
+    text-decoration: none   ;
+  }

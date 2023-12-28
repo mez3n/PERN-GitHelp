@@ -1,0 +1,46 @@
+.profilerequestwrapperrr{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.postmanwrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.eachpostman {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #f8f8f8; /* Set your desired background color */
+    padding: 15px; /* Adjust the padding as needed */
+    border-radius: 8px; /* Add border-radius for rounded corners */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+
+    /* Add hover effect */
+    &:hover {
+        background-color: #e0e0e0; /* Set your desired hover background color */
+    }
+
+    /* Style the button within eachpostman */
+    button.assignbutton {
+        background-color: #3498db; /* Set your desired button background color */
+        color: #ffffff; /* Set your desired button text color */
+        padding: 8px 12px; /* Adjust the padding as needed */
+        border: none;
+        border-radius: 4px; /* Add border-radius for rounded corners */
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Add a smooth transition effect */
+
+        /* Button hover effect */
+        &:hover {
+            background-color: #2980b9; /* Set your desired hover button background color */
+        }
+    }
+}
+
+/* Rest of your CSS remains unchanged */

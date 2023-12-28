@@ -1,0 +1,48 @@
+.rightbar{
+    flex:2;
+}
+.profileimg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.wrabberprofileimg{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rightbarwrabber{
+    padding: 20px;
+}
+.rightbarbio{
+    text-align: center;
+}
+.etlopbutton{
+    text-align: center;
+}
+.patientwrapper {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .patientwrapper:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .patientwrapper p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  
+Link{
+    text-decoration: none;
+
+}

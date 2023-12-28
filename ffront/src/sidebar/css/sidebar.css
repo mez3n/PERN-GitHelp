@@ -1,0 +1,15 @@
+.sidebar{
+   flex:2;
+}
+.sidebargroup{
+    text-align: center;
+    padding: 20px 10px 10px 10px;
+}
+.sidebarFriendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .sidebarwrabber{
+    padding: 40px;
+  }
