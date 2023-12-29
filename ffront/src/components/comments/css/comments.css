@@ -1,0 +1,35 @@
+.pagecomment{
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid rgb(173 162 162);
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+.pagecommentwrapper{
+    padding: 15px;
+}
+.commenttop{
+    display: flex;
+    align-items: center;
+    
+}
+.commentimage{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.commentname{
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 10px;
+
+}
+.commentcontent{
+    margin: 10px;
+    font-size: 14px;
+}
+.commenttyping {
+    max-width: 490px; /* Set the desired maximum width */
+    word-wrap: break-word; /* Optional: allow long words to break and wrap */
+  }

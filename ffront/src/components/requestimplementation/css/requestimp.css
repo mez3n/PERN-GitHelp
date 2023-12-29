@@ -1,0 +1,26 @@
+
+.requestwrapperr {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: background-color 0.3s;
+    width: 70%;
+    margin: 10px auto;
+  }
+  .requestt{
+    width: 100%;
+  }
+  .requestwrapperr:hover {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+  }
+  
+  .requestwrapperr p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+a{
+    text-decoration: none;
+}

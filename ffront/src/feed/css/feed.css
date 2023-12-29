@@ -1,0 +1,17 @@
+.feed{
+    flex:5;
+}
+.feedWrapper{
+    padding: 20px;
+}
+.profilepicture{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.wrabberprofileimg{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

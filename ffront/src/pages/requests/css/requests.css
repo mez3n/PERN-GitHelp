@@ -1,0 +1,17 @@
+.servicerequest{
+text-align: center;
+font-size: 70px;
+color: #333;
+}
+.requestwrapper{
+    padding: 50px;
+}
+.serviceswrappers{
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    margin: auto;
+    gap: 13px;
+
+} 
